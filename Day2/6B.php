@@ -18,7 +18,7 @@
             $totalc = $mc1+$mc2+$mc3+$mc4+$mc5;
             $total = "Total Marks obbtained: $totalc<br>";
             $out_off = "Total marks: 600<br>";
-            $percentagec = (($mc1+$mc2+$mc3+$mc4+$mc5)/600)*100;
+            $percentagec = (($mc1+$mc2+$mc3+$mc4+$mc5)/500)*100;
             $percentage = "Percentage: $percentagec%<br>";
         }
     }
