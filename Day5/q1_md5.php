@@ -1,10 +1,14 @@
 <?php
+    $conn = new  mysqli('localhost','root','','result');
     if(isset($_POST['md5'])){
-        if($_POST['input']){
-            $md5 = "Result after apllying MD5 Algorithm: ".md5($_POST['input']);
-        }
-        if($_POST['file']){
-            $md5_file = "After applying MD5 Algorithm on file: ".md5_file($_POST['file']);
+        if($_POST['user'] && $_POST['pass']){
+            $user = $_POST['user'];
+            $md5_pass = md5($_POST['pass']);
+            $sql = $conn->prepare("INSERT into data1(user,pass) values(?,?)");
+            $sql->bind_param('ss',$user,$md5_pass);
+            if($sql->execute()){
+                $success = "Insert complete.";
+            }
         }
     }
 ?>
@@ -18,19 +22,16 @@
 </head>
 <body>
     <form method="post">
-        <label for="input">Input Text: </label>
-        <input type="text" id="input" name="input"><br><br>
-        <label for="file">Select File: </label>
-        <input type="file" name="file" id="file"><br><br>
-        <input type="submit" value="Applyy MD5" name="md5"><br><br>
+        <label for="input">Username: </label>
+        <input type="text" id="input" name="user"><br><br>
+        <label for="file">Password: </label>
+        <input type="password" name="pass" id="file"><br><br>
+        <input type="submit" value="Login" name="md5"><br><br>
         <?php 
-            if(isset($md5)){
-                echo $md5;
+            if(isset($success)){
+                echo $success;
                 echo "<br>";
             }
-            if(isset($md5_file)){
-                echo $md5_file;
-            } 
         ?>
     </form>
 </body>

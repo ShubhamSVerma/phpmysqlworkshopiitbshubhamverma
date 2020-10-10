@@ -1,10 +1,14 @@
 <?php
     if(isset($_POST['send'])){
-        if(isset($_POST['recipent']) && isset($_POST['sub']) && isset($_POST['msg'])){
-            $to = $_POST['recipent'];
-            $sub = $_POST['sub'];
-            $msg = $_POST['msg'];
-            mail($to,$sub,$msg);
+        if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])){
+            $name = $_POST['name'];
+            $user_email = $_POST['email'];
+            $feedback = $_POST['msg'];
+            if(mail($user_email,'Feedback Form','Thank you for giving your time and filling our feedback form.')){
+                echo "Thank you form your feedback.";
+            };
+            $owner_msg = "Name:$name\nEmail:$user_email\nFeedback:$feedback";
+            mail('shubhamsv01@gmail.com','New Feedback',$owner_msg);
        } 
     }
 ?>
@@ -18,12 +22,12 @@
 </head>
 <body>
     <form method="post">
-        <label for="recipent">To: </label>
-        <input type="email" id="recipent" name="recipent"><br><br>
-        <label for="sub">Subject: </label>
-        <input type="text" id="sub" name="sub"><br><br>
-        <label for="msg">Message: </label>
-        <input type="text" id="msg" name="msg"><br><br>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="msg">Feedback: </label>
+        <textarea name="msg" id="msg" cols="30" rows="5"></textarea><br><br>
         <input type="submit" value="Send" name="send">
     </form>
 </body>
