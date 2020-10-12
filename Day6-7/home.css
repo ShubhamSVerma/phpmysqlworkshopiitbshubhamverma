@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  flex: 1;
+  display: flex;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+header nav {
+  margin: 1rem 2rem 0 auto;
+}
+header > * {
+  flex: 0 auto;
+}
+header span.logo {
+  pointer-events: none;
+  font-size: 2rem;
+  font-weight: bolder;
+  margin: 0.5rem 0 0.2rem 2rem;
+  background: radial-gradient(black, grey, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+header nav ul {
+  line-height: 1rem;
+  list-style-type: none;
+}
+header nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+header nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+header nav ul li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  background: black;
+  height: 1.5px;
+  transition: width 1s ease-in;
+}
+header nav ul li a:hover::after {
+  width: 100%;
+  transition: width 1s ease-in;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main div {
+  height: 2rem;
+}
+main div p {
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(
+    to right,
+    rgb(1, 1, 252),
+    rgb(56, 123, 248),
+    rgb(137, 162, 241)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main div {
+  text-align: center;
+}
+main div a button {
+  margin: 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 3rem;
+  padding: 1rem;
+  outline: none;
+  line-height: 0.2rem;
+  transition: all 0.5s ease-in;
+}
+main div a button:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.5s ease-in;
+}
